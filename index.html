@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seller's Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="text-center">Seller's Admin</h1>
+    <div class="container mt-4" id="productContainer">
+        <form id="productForm">
+          <div class="mb-3">
+            <label for="price" class="form-label">Selling Price:</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Enter the price">
+          </div>
+          <div class="mb-3">
+            <label for="productName" class="form-label">Product Name:</label>
+            <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter Product Name">
+          </div>
+          <button type="submit" class="btn btn-primary">Add Product</button>
+        </form>
+        <h2 id="Products" class="text-center">Products</h2>
+      </div>
+      <div class="container mt-4"><strong>Total value worth of Products: Rs </strong><span id="productSum">0</span></div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+      <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
