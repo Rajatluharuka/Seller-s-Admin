@@ -8,7 +8,7 @@ productList.id = 'list';
 container.appendChild(productList);
 const data = {};
 let totalPrice=0;
-document.getElementById("productForm").addEventListener('submit', function(event) {
+document.getElementById("productForm").addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -17,39 +17,40 @@ document.getElementById("productForm").addEventListener('submit', function(event
         data[key] = value;
     });
 
-    axios.post("https://crudcrud.com/api/544e6a5d98fb48919b2092375681ad14/productData",data)
-    .then((response) => {
+    try {
+        const response = await axios.post("https://crudcrud.com/api/a0394bf0e45646e2a702bed0fa69d1d4/productData", data);
         showProductData(response.data);
         addPrice(response.data);
-    }).catch((err) => {
+    } catch (err) {
         console.log(err);
-    });
+    }
 });
 
-window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/544e6a5d98fb48919b2092375681ad14/productData")
-    .then((response) => {
-        for(let i=0;i<response.data.length;i++){
+window.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const response = await axios.get("https://crudcrud.com/api/a0394bf0e45646e2a702bed0fa69d1d4/productData");
+        
+        for (let i = 0; i < response.data.length; i++) {
             showProductData(response.data[i]);
             addPrice(response.data[i]);
         }
-    }).catch((err) => {
+    } catch (err) {
         console.log(err);
-    });
-})
+    }
+});
 
-document.getElementById("list").addEventListener('click',function(e) {
+document.getElementById("list").addEventListener('click',async function(e) {
     if(e.target.classList.contains('delete')){
         let product=e.target.parentElement;
         let removeProduct = product.dataset.id;
         subPrice(product.childNodes[0].textContent);
         document.getElementById("list").removeChild(product);
-        axios.delete(`https://crudcrud.com/api/544e6a5d98fb48919b2092375681ad14/productData/${removeProduct}`)
-    .then((response) => {
-        console.log(response);
-    }).catch((err) => {
-        console.log(err);
-    });
+        try {
+            const response = await axios.delete(`https://crudcrud.com/api/a0394bf0e45646e2a702bed0fa69d1d4/productData/${removeProduct}`);
+            console.log(response);
+        } catch (err) {
+            console.log(err);
+        }
     }
 });
 
